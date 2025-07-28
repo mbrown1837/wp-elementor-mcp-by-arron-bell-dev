@@ -1,0 +1,47 @@
+# Smithery configuration file: https://smithery.ai/docs/build/project-config
+
+startCommand:
+  type: stdio
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => {
+      const env = {
+        WORDPRESS_BASE_URL: config.wordpressBaseUrl,
+        WORDPRESS_USERNAME: config.wordpressUsername,
+        WORDPRESS_APPLICATION_PASSWORD: config.wordpressApplicationPassword,
+      };
+      switch(config.mode) {
+        case 'essential': env.ELEMENTOR_MINIMAL_MODE = 'true'; break;
+        case 'standard': env.ELEMENTOR_MCP_MODE = 'standard'; break;
+        case 'advanced': env.ELEMENTOR_MCP_MODE = 'advanced'; break;
+        case 'full': env.ELEMENTOR_ENABLE_ALL = 'true'; break;
+      }
+      return { command: 'node', args: ['dist/index.js'], env };
+    }
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - wordpressBaseUrl
+      - wordpressUsername
+      - wordpressApplicationPassword
+    properties:
+      wordpressBaseUrl:
+        type: string
+        description: Base URL of the WordPress site
+      wordpressUsername:
+        type: string
+        description: WordPress username
+      wordpressApplicationPassword:
+        type: string
+        description: Application password for WordPress user
+      mode:
+        type: string
+        default: standard
+        description: Operation mode
+  exampleConfig:
+    wordpressBaseUrl: https://yoursite.com
+    wordpressUsername: admin
+    wordpressApplicationPassword: abcd efgh ijkl mnop
+    mode: standard
