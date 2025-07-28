@@ -1,5 +1,7 @@
 # Elementor WordPress MCP Server v1.6.1
 
+[![smithery badge](https://smithery.ai/badge/@mbrown1837/wp-elementor-mcp-by-arron-bell-dev)](https://smithery.ai/server/@mbrown1837/wp-elementor-mcp-by-arron-bell-dev)
+
 A powerful, modular Model Context Protocol (MCP) server for WordPress and Elementor. This server provides AI assistants with scalable capabilities—from basic content management to advanced page building—through an intelligent configuration system.
 
 ## 🆕 What's New in v1.6.1
@@ -60,6 +62,14 @@ _*Pro features require Elementor Pro license_
 - Elementor Pro (optional, for template and global features)
 
 ## 📦 Installation
+
+### Installing via Smithery
+
+To install wp-elementor-mcp-by-arron-bell-dev for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@mbrown1837/wp-elementor-mcp-by-arron-bell-dev):
+
+```bash
+npx -y @smithery/cli install @mbrown1837/wp-elementor-mcp-by-arron-bell-dev --client claude
+```
 
 ### Option 1: NPX (Recommended)
 ```bash
